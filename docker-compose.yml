@@ -12,7 +12,7 @@ services:
     volumes:
       - ./:/app
     ports:
-      - "8080:8080"
+      - "8443:8443"
     depends_on:
       - redis
     command: /bin/bash /app/docker-entrypoint.sh
