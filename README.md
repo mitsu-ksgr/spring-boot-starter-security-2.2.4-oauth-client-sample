@@ -10,3 +10,5 @@ $ docker-compose up -d
 
 run build at first on docker-compose up, so it takes a few minutes to get up the app service.
 
+then, open: https://localhost:8443/login
+
