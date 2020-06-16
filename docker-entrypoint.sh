@@ -7,10 +7,14 @@ set -e
 PROJ_DIR=/app
 cd ${PROJ_DIR}
 
-# setup hosts
-netstat -nr | grep '^0\.0\.0\.0' | awk '{print $2" dockerhost"}' >> /etc/hosts
+# Setup hosts
+DOCKER_HOST=$(netstat -nr | grep '^0\.0\.0\.0' | awk '{print $2}')
+echo "${DOCKER_HOST} dockerhost" >> /etc/hosts
 
-# Build application
+# Generate certificates
+./generate_certificates.sh /app/certs
+
+# Build Application
 ./gradlew clean build
 
 # Run the application.

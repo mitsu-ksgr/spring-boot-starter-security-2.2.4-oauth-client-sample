@@ -2,6 +2,12 @@ server:
   servlet:
     session:
       timeout: 24h
+  port: 8080
+  ssl:
+    key-store: /app/certs/mycert.pfx
+    key-store-type: PKCS12
+    key-store-password: password
+    key-alias: mycert
 spring:
   redis:
     host: redis
@@ -10,6 +16,7 @@ spring:
     redis:
       namespace: oauth2-client-sample:session
   security:
+    require-ssl: true
     oauth2:
       client:
         registration:
